@@ -1,10 +1,10 @@
 #pragma once
 #include "Common.h"
 struct TimeDuration {
-	TimeDuration(uint32_t hours, uint32_t min)
+	TimeDuration(uint32_t hours, uint32_t minutes)
 		:
 		hours(hours),
-		minutes(minutes) 
+		minutes(minutes)
 	{}
 
 	const uint32_t minutes, hours;
