@@ -17,11 +17,11 @@ public:
 		std::string eventName;
 		EventType type;
 	};
-	bool CreateEvent(EventParams& eventParameters);
+	Event* CreateEvent(EventParams& eventParameters);
 private:
 	TimePoint m_timePoint;
 	std::string m_name;
-	int m_duration;
+	TimeDuration m_duration;
 	EventType m_eventType;
 
 	

@@ -2,7 +2,15 @@
 
 int main() {
 
-	Calendar::CreateCalendar();
 
+	Calendar c;
+	while (true) {
+		c.UserSelect();
+		while (true) {
+			c.Update();
+		}
+	}
+
+	system("pause");
 	return 0;
 }
