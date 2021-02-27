@@ -7,8 +7,13 @@ class User
 	bool AddEvent(Event& event);
 	bool RemoveEvent(TimePoint& timpoint);
 	
-	std::string SetUserName(User& Name);
-	std::string Name;
+private:
+	std::string m_name;
+	void SetUserName(std::string& m_name);
+public:
+	
+	
+	
 
 };
 

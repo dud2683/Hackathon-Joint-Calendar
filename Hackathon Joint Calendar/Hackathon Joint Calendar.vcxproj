@@ -141,7 +141,7 @@
   <ItemGroup>
     <ClCompile Include="Calendar.cpp" />
     <ClCompile Include="Event.cpp" />
-    <ClCompile Include="imput.cpp" />
+    <ClCompile Include="Input.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="TimePoint.cpp" />
     <ClCompile Include="TimeTable.cpp" />
@@ -151,7 +151,7 @@
     <ClInclude Include="Calendar.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="Common.h" />
-    <ClInclude Include="imput.h" />
+    <ClInclude Include="Input.h" />
     <ClInclude Include="TimePoint.h" />
     <ClInclude Include="TimeTable.h" />
     <ClInclude Include="User.h" />

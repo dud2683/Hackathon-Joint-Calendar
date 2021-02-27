@@ -1,5 +1,5 @@
 #pragma once
-class imput
+class Input
 {
 
 
