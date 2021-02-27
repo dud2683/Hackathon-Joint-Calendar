@@ -2,7 +2,7 @@
 #define DEBUG
 
 #ifdef DEBUG
-#define LOG(x) std::cout<<x
+#define LOG(x) std::cout<<x<<"\n"
 #else
 #define LOG(x)
 #endif
