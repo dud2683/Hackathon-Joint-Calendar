@@ -9,7 +9,8 @@ public:
 	void UserSelect(bool* loop, bool* loop2);
 	void Update(bool* loop);
 private:
-	User* CreateUser();
+	void CreateUser();
+	void CreateUser(std::string);
 	void SelectUser(User* user);
 	void SelectUser(std::string);
 	User* FindUser(std::string name);

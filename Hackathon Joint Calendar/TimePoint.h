@@ -11,6 +11,7 @@ struct TimeDuration {
 };
 class TimePoint
 {
+	TimePoint() = default;
 public:
 	void PrintTimePoint();
 private:

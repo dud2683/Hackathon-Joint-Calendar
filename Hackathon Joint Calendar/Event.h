@@ -11,7 +11,7 @@ public:
 		Personal
 	};
 	struct EventParams {
-		
+		EventParams() = default;
 		TimePoint startTime;
 		int duration;
 		std::string eventName;

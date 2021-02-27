@@ -8,12 +8,15 @@ Calendar::Calendar()
 
 void Calendar::UserSelect(bool* loop, bool* loop2)
 {
+	User* user = nullptr;
 	switch (Input::PollUserSelection()) {
 		typedef Input::UserSelectOptions u;
 	case u::Create:
-		p_selectedUser = CreateUser();
+		CreateUser();
 		break;
 	case u::Select:
+		COUT("Please input a username");
+		user = FindUser(Input::GetString());
 		break;
 	case u::Leave :
 		COUT("Goodbye\n");
@@ -29,12 +32,23 @@ void Calendar::Update(bool* loop)
 	auto input = Input::PollUpdateOptions();
 	switch (input) {
 		typedef Input::UpdateOptions u;
-		case u::
+	case u::AddEvent:
+		p_selectedUser->AddEvent();
+		break;
+
+	case u::RemoveEvent:
+		p_selectedUser->RemoveEvent();
+		break;
+	
+	case u::LogOut:
+		p_selectedUser = nullptr;
+		*loop = false;
+		break;
 	}
-	*loop = false;
+	
 }
 
-User* Calendar::CreateUser()
+void Calendar::CreateUser()
 {
 	COUT("Please enter a username: ");
 	std::string username = Input::GetString();
@@ -44,19 +58,50 @@ User* Calendar::CreateUser()
 			SelectUser(user);
 		}
 		else {
-			COUT("Your user has been succesfuly created!\n");
-			return CreateUser();
+			COUT("Please try another username.\n");
+			CreateUser();
 		}
 	}
 	else {
-		m_users.push_back(User(username));
+		User u = User(username);
+		m_users.push_back(u);
+		SelectUser(*u.GetName());
 	}
 
 }
 
+void Calendar::CreateUser(std::string name)
+{
+	m_users.push_back(User(name));
+	COUT("User created successfuly\n");
+	SelectUser(name);
+}
+
 void Calendar::SelectUser(User* user)
 {
+	
 	p_selectedUser = user;
+	COUT("Welcome "<<*user->GetName()<<"\n");
+}
+
+void Calendar::SelectUser(std::string name)
+{
+	auto user = FindUser(name);
+	if (user == nullptr) {
+		COUT("That user does not exist, would you like to create a user with that name?\n");
+		bool answer = Input::YesOrNo();
+			if (answer) {
+				CreateUser(name);
+			}
+			else {
+				COUT("Please try another name.\n");
+				auto s = Input::GetString();
+				SelectUser(s);
+			}
+	}
+	else {
+		SelectUser(user);
+	}
 }
 
 User* Calendar::FindUser(std::string name)

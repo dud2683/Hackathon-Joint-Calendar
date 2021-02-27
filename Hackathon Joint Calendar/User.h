@@ -7,6 +7,8 @@ class User
 public:
 	User(std::string name);
 	const std::string* GetName();
+	bool AddEvent();
+	bool RemoveEvent();
 private:
 
 	bool AddEvent(Event& event);

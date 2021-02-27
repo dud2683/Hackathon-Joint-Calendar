@@ -19,6 +19,8 @@ public:
 	static UserSelectOptions PollUserSelection();
 	static UpdateOptions PollUpdateOptions();
 	static bool UserNameInUse();
+	static bool YesOrNo();
 	static std::string GetString();
+
 };
 

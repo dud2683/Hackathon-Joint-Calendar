@@ -60,6 +60,17 @@ bool Input::UserNameInUse()
 		return false;
 }
 
+bool Input::YesOrNo()
+{
+	YES_NO;
+	int answer;
+	CIN(answer);
+	if (answer == 1)
+		return true;
+	else
+		return false;
+}
+
 std::string Input::GetString()
 {
 	std::string answer;

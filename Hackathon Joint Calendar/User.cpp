@@ -11,9 +11,24 @@ const std::string* User::GetName()
 	return &m_name;
 }
 
-std::string User::SetUserName(User& Name)
+bool User::AddEvent()
 {
-	COUT("Please enter your name:");
-	CIN(m_name);
-	return std::string();
+	return true;
 }
+
+bool User::RemoveEvent()
+{
+	return false;
+}
+
+bool User::AddEvent(Event& event)
+{
+	return false;
+}
+
+bool User::RemoveEvent(TimePoint& timpoint)
+{
+	return false;
+}
+
+
