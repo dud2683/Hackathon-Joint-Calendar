@@ -8,9 +8,10 @@
 #endif
 
 #define COUT(x) std::cout<<x
-
+#define CIN(x) std::cin>>x
 
 #include <iostream>
 #include <string>
 #include <vector>
 #include <assert.h>
+#include "imput.h"

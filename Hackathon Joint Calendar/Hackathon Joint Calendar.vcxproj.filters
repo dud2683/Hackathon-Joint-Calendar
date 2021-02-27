@@ -33,6 +33,9 @@
     <ClCompile Include="Calendar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="imput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="User.h">
@@ -51,6 +54,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Calendar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
