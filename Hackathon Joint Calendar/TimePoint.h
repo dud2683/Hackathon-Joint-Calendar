@@ -1,5 +1,14 @@
 #pragma once
 #include "Common.h"
+struct TimeDuration {
+	TimeDuration(uint32_t hours, uint32_t min)
+		:
+		hours(hours),
+		minutes(minutes) 
+	{}
+
+	const uint32_t minutes, hours;
+};
 class TimePoint
 {
 public:
@@ -31,10 +40,11 @@ private:
 
 	private:
 
-		Date(uint32_t day, Month month, uint32_t year) {
-			this->day = day;
-			this->month = month;
-			this->year = year;
+		Date(uint32_t day, Month month, uint32_t year):
+		day(day),
+		month(month),
+		year(year)
+		{
 		}
 		bool ValidateDate(uint32_t day, Month month, uint32_t year);
 
@@ -49,10 +59,10 @@ private:
 	struct Time {
 	private:
 
-		Time(uint32_t minute, uint32_t hour) {
-			this->minute = minute;
-			this->hour = hour;
-		}
+		Time(uint32_t minute, uint32_t hour):
+		minute(minute),
+		hour(hour)
+		{}
 		bool ValidateTime(uint32_t minute, uint32_t hour);
 	public:
 		Time CreateTime(uint32_t minute, uint32_t hour);
@@ -62,7 +72,7 @@ private:
 	};
 
 public:
-	TimePoint operator - (TimePoint& leftHandSide);
+	TimeDuration operator - (TimePoint& rightHandSide);
 
 private:
 	Date m_date;

@@ -5,13 +5,15 @@ class Calendar
 {
 
 public:
-	Calendar() = delete;
-	~Calendar();
-	static void CreateCalendar();
+	Calendar();
+	void UserSelect();
+	void Update();
 private:
-	void Run();
+	
+	
 
 private:
+	
 	std::vector<User> s_users;
 };
 

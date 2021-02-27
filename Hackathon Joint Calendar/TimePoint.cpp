@@ -6,9 +6,20 @@ void TimePoint::PrintTimePoint()
     m_date.PrintDate();
 }
 
-TimePoint TimePoint::operator-(TimePoint& leftHandSide)
+TimeDuration TimePoint::operator-(TimePoint& rightHandSide)
 {
-    return TimePoint();
+    assert(this->m_time.hour >= rightHandSide.m_time.hour);
+    uint32_t min, hour;
+
+    hour = this->m_time.hour - rightHandSide.m_time.hour;
+
+    if (rightHandSide.m_time.minute <= this->m_time.minute)
+        min = this->m_time.minute - rightHandSide.m_time.minute;
+    else {
+        min = rightHandSide.m_time.minute - this->m_time.minute;
+        hour--;
+    }
+    return TimeDuration(hour,min);
 }
 
 void TimePoint::Date::PrintMonth()
@@ -59,6 +70,8 @@ bool TimePoint::Date::ValidateDate(uint32_t day, Month month, uint32_t year)
     if (year < 2000 || year>2200)
         return false;
 
+    bool isLeapYear = (year % 4 == 0 && year % 100 != 0);
+
     bool returnBool = false;
 
     switch (month){
@@ -67,7 +80,7 @@ bool TimePoint::Date::ValidateDate(uint32_t day, Month month, uint32_t year)
             returnBool = true;
         break;
     case Month::February:
-        bool isLeapYear = (year % 4 == 0 && year % 100 != 0);
+       
         if (isLeapYear) {
             if(day<=29)
                 returnBool = true;
