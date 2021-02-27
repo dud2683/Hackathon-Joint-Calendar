@@ -26,7 +26,11 @@ void Calendar::UserSelect(bool* loop, bool* loop2)
 
 void Calendar::Update(bool* loop)
 {
-	Input::PollUpdateOptions();
+	auto input = Input::PollUpdateOptions();
+	switch (input) {
+		typedef Input::UpdateOptions u;
+		case u::
+	}
 	*loop = false;
 }
 
@@ -52,6 +56,7 @@ User* Calendar::CreateUser()
 
 void Calendar::SelectUser(User* user)
 {
+	p_selectedUser = user;
 }
 
 User* Calendar::FindUser(std::string name)

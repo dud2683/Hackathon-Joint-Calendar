@@ -11,6 +11,7 @@ public:
 private:
 	User* CreateUser();
 	void SelectUser(User* user);
+	void SelectUser(std::string);
 	User* FindUser(std::string name);
 
 	
