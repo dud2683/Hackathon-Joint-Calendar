@@ -6,17 +6,17 @@ class Calendar
 
 public:
 	Calendar();
-	void UserSelect();
-	void Update();
+	void UserSelect(bool* loop, bool* loop2);
+	void Update(bool* loop);
 private:
 	User* CreateUser();
-	void SelectUser(User*);
+	void SelectUser(User* user);
 	User* FindUser(std::string name);
 
 	
 
 private:
-	User* p_selectedUser;
+	User* p_selectedUser=nullptr;
 	
 	std::vector<User> m_users;
 };

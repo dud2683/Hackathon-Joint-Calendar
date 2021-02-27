@@ -4,13 +4,14 @@ int main() {
 
 
 	Calendar c;
-	while (true) {
-		c.UserSelect();
-		while (true) {
-			c.Update();
+	bool us = true, ud = true;
+	while (us) {
+		c.UserSelect(&us, &ud);
+		while (ud) {
+			c.Update(&ud);
 		}
 	}
 
-	system("pause");
+
 	return 0;
 }
