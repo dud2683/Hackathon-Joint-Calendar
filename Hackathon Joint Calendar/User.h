@@ -4,16 +4,16 @@
 
 class User
 {
+public:
+	User(std::string name);
+	const std::string* GetName();
+private:
+
 	bool AddEvent(Event& event);
 	bool RemoveEvent(TimePoint& timpoint);
-	
-private:
-	std::string m_name;
-	void SetUserName(std::string& m_name);
-public:
-	
-	
-	
+
+
+	const std::string m_name;
 
 };
 
