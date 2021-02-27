@@ -7,6 +7,8 @@
 #define LOG(x)
 #endif
 
+#define COUT(x) std::cout<<x
+
 
 #include <iostream>
 #include <string>
