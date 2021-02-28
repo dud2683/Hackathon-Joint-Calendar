@@ -147,7 +147,7 @@ bool Date::ValidateDate(uint32_t day, Month month, uint32_t year)
 {
     typedef Date::Month Month;
 
-    if (year < 2000 || year>2200)
+    if (year < 2020 || year>2200)
         return false;
 
     bool isLeapYear = (year % 4 == 0 && year % 100 != 0);
