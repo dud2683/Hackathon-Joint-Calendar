@@ -25,7 +25,7 @@ void TimeTable::RemoveEvent(TimePoint& tp)
 {
 	int index = FindEvent(tp);
 	if (index == -1) 
-		COUT("There is no event at that time.");
+		COUT("There is no event at that time.\n");
 	else {
 		RemoveEvent(index, true);
 	}
