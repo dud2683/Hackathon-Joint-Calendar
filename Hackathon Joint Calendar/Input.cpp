@@ -25,35 +25,50 @@ Input::UserSelectOptions Input::PollUserSelection()
 {
 	COUT(prompt1);
 	int answer;
-	CIN(answer);
-	if (answer < 1 || answer>3) {
+	std::string rough;
+	
+	CIN(rough);
+	answer = rough[0]-48;
+	//COUT(answer);// To troubleshoot, remove //
+	if(answer < 1 ||answer>3) {
 		INVALID_INPUT;
 		return PollUserSelection();
-	}
-	else
+
+	}else{
 		return UserSelectOptions(answer);
+	}
+	
+	
+	
+		
 }
 
 Input::UpdateOptions Input::PollUpdateOptions()
 {
 	
 	COUT(prompt2);
-	int answer;
-	CIN(answer);
+	std::string rough;
+	CIN(rough);
+	int answer = rough[0]-48;
+
 	if (answer < 1 || answer>5) {
 		INVALID_INPUT;
 		return PollUpdateOptions();
 	}
-	else
+	else {
 		return UpdateOptions(answer);
+	}
+		
+		
 	
 }
 
 bool Input::UserNameInUse()
 {
 	COUT(prompt3);
-	int answer;
-	CIN(answer);
+	std::string rough;
+	CIN(rough);
+	int answer = rough[0] - 48;
 	if (answer == 1)
 		return true;
 	else
@@ -63,8 +78,9 @@ bool Input::UserNameInUse()
 bool Input::YesOrNo()
 {
 	YES_NO;
-	int answer;
-	CIN(answer);
+	std::string rough;
+	CIN(rough);
+	int answer = rough[0] - 48;
 	if (answer == 1)
 		return true;
 	else

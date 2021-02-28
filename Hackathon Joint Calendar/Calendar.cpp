@@ -15,7 +15,7 @@ void Calendar::UserSelect(bool* loop, bool* loop2)
 		CreateUser();
 		break;
 	case u::Select:
-		COUT("Please input a username");
+		COUT("Please input a username: ");
 		user = FindUser(Input::GetString());
 		break;
 	case u::Leave :
