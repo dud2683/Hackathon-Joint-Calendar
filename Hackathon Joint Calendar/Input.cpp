@@ -14,9 +14,8 @@ std::string prompt2 =
 R"(Would you like to
 	Check your calendar for your next 3 events (1)
 	Add an event to your calendar (2),
-	Remove an existing event from your calendar (3),
-	Find a time for an event (4) or
-	Logout (5)
+	Remove an existing event from your calendar (3) or
+	Logout (4)
 )";
 std::string prompt3 =
 R"(That username is already in use, would you like to
@@ -56,7 +55,7 @@ Input::UpdateOptions Input::PollUpdateOptions()
 	std::getline(std::cin, rough);
 	int answer = rough[0]-48;
 
-	if (answer < 1 || answer>5) {
+	if (answer < 1 || answer>4) {
 		INVALID_INPUT;
 		return PollUpdateOptions();
 	}

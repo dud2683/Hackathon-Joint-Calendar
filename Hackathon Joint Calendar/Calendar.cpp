@@ -48,8 +48,6 @@ void Calendar::Update(bool* loop)
 		p_selectedUser->RemoveEvent();
 		break;
 	
-	case u::FindTimeForEvent:
-		FindTimeForEvent();
 
 	case u::CheckMyCalendar:
 		p_selectedUser->CheckCalendar(CT);

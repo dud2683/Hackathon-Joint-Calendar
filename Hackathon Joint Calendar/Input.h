@@ -12,8 +12,7 @@ public:
 		CheckMyCalendar=1,
 		AddEvent=2,
 		RemoveEvent=3,
-		FindTimeForEvent=4,
-		LogOut=5
+		LogOut=4
 	};
 
 	static UserSelectOptions PollUserSelection();
