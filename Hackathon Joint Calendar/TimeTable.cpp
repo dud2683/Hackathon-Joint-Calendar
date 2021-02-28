@@ -2,9 +2,20 @@
 
 void TimeTable::AddEvent(TimePoint& ct)
 {
-	Event::EventParams ep = Event::EventParams(ct);
-	
-	Event* m_event = new Event(ep);
+	bool valid = false;
+	Event* m_event = nullptr;
+	while (!valid) {
+		Event::EventParams ep = Event::EventParams(ct);
+
+		m_event = new Event(ep);
+		if (FindEvent(ep.startTime) != -1) {
+			COUT("You already have an event starting at that time.\nPlease create a new event.\n");
+			valid = false;
+		}
+		else {
+			valid = true;
+		}
+	}
 	m_events.push_back(m_event);
 	COUT("You have successfuly created an event :\n");
 	m_event->PrintEvent();
