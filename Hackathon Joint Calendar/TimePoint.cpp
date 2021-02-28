@@ -153,64 +153,67 @@ bool Date::ValidateDate(uint32_t day, Month month, uint32_t year)
     bool isLeapYear = (year % 4 == 0 && year % 100 != 0);
 
     bool returnBool = false;
+    if (day < 1) {
 
-    switch (month){
-    case Month::January:
-        if (day <= 31)
+    }else{  
+        switch (month){
+        case Month::January:
+            if (day <= 31)
             returnBool = true;
-        break;
-    case Month::February:
+            break;
+        case Month::February:
        
-        if (isLeapYear) {
+            if (isLeapYear) {
             if(day<=29)
                 returnBool = true;
-        }
-        else {
-            if (day <= 28)
+            }
+            else {
+                if (day <= 28)
                 returnBool = true;
-        }
-        break;
-    case Month::March:
-        if (day <= 31)
-            returnBool = true;
-        break;
-    case Month::April:
-        if (day <= 30)
-            returnBool = true;
-        break;
-    case Month::May:
-        if (day <= 31)
-            returnBool = true;
-        break;
-    case Month::June:
-        if (day <= 30)
-            returnBool = true;
-        break;
-    case Month::July:
-        if (day <= 31)
-            returnBool = true;
-        break;
-    case Month::August:
+            }
+            break;
+        case Month::March:
             if (day <= 31)
                 returnBool = true;
             break;
-    case Month::September:
-        if (day <= 30)
+        case Month::April:
+            if (day <= 30)
+                returnBool = true;
+            break;
+        case Month::May:
+            if (day <= 31)
+                returnBool = true;
+            break;
+        case Month::June:
+            if (day <= 30)
+                returnBool = true;
+            break;
+        case Month::July:
+            if (day <= 31)
             returnBool = true;
-        break;
-    case Month::October:
-        if (day <= 31)
+            break;
+        case Month::August:
+            if (day <= 31)
+                returnBool = true;
+            break;
+        case Month::September:
+            if (day <= 30)
             returnBool = true;
-        break;
-    case Month::November:
-        if (day <= 30)
+            break;
+        case Month::October:
+            if (day <= 31)
             returnBool = true;
-        break;
-    case Month::December:
-        if (day <= 31)
+            break;
+        case Month::November:
+            if (day <= 30)
             returnBool = true;
-        break;
+            break;
+        case Month::December:
+            if (day <= 31)
+            returnBool = true;
+            break;
             
+    }
     }
     if (!returnBool) {
         COUT("That date was invalid, please try again.\n");
