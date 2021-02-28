@@ -12,7 +12,7 @@ struct TimeDuration {
 struct Date {
 
 public:
-
+	
 	enum class Month {
 		Invalid = 0,
 		January = 1,
@@ -28,6 +28,7 @@ public:
 		November = 11,
 		December = 12
 	};
+	static Month StringToMonth(std::string s);
 
 public:
 

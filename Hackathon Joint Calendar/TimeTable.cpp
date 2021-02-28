@@ -12,11 +12,24 @@ void TimeTable::AddEvent()
 
 void TimeTable::RemoveEvent(TimePoint tp)
 {
+	int index = FindEvent(tp);
+	if (index == -1) 
+		COUT("There is no event at that time.");
+	else {
+		Event* selectedEV = m_events[index];
+		delete selectedEV;
+		auto last = m_events.end()-1;
+		m_events[index] = *last;
+		m_events.pop_back();
+		Sort();
+	}
+		
 	
 }
 
 void TimeTable::PrintNextThreeEvents()
 {
+	RemovePastEvents();
 	int size = m_events.size();
 	bool sizeTest = (size > 0);
 	bool lessThanThree = (size < 3);
@@ -43,4 +56,13 @@ void TimeTable::PrintNextThreeEvents()
 		m_events[2]->PrintEvent();
 		
 	}
+}
+
+int TimeTable::FindEvent(TimePoint& tp)
+{
+	return 0;
+}
+
+void TimeTable::RemovePastEvents()
+{
 }

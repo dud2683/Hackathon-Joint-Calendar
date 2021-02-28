@@ -16,7 +16,8 @@ private:
 				return *a > *b;
 			});
 	}
-	int FindEvent();
+	int FindEvent(TimePoint& tp); //returns index of event
+	void RemovePastEvents();
 
 	std::vector<Event*> m_events;
 };

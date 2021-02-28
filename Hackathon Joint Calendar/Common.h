@@ -12,7 +12,7 @@
 #define INVALID_INPUT std::cout<<"That was not a valid input, please try again\n"
 #define SLEEP(x) std::this_thread::sleep_for (std::chrono::seconds(x))
 #define YES_NO std::cout<<"Yes (1), No (2)\n"
-
+#define _CRT_SECURE_NO_WARNINGS
 
 
 #include <iostream>
@@ -23,5 +23,6 @@
 #include <thread>
 #include <chrono>
 #include <algorithm>
+
 
 

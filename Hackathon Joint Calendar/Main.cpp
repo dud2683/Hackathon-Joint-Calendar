@@ -1,7 +1,10 @@
 #include "Calendar.h"
+#include <ctime>
 
 int main() {
-
+	
+	
+	COUT("");
 
 	Calendar c;
 	bool us = true, ud = true;

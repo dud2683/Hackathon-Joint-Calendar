@@ -34,6 +34,17 @@ TimeDuration TimePoint::operator-(TimePoint& rightHandSide)
     return TimeDuration(hour,min);
 }
 
+Date::Month Date::StringToMonth(std::string s)
+{
+    if (s == "Jan" || "January")
+        return Month(1);
+    else if (s == "Feb" || "February")
+        return Month(2);
+    
+    
+    
+}
+
 void Date::PrintMonth()
 {
     typedef Date::Month Month;
