@@ -23,6 +23,7 @@ public:
 	static std::string GetString();
 	static std::vector<int> GetTime();
 	static std::vector<int> GetDate();
+	static bool VerifyNumber(std::string& s);
 	
 };
 

@@ -111,6 +111,7 @@ std::string Input::GetString()
 
 std::vector<int> Input::GetTime()
 {
+	bool thereIsFail = false;
 	std::string raw;
 	std::cin.sync();
 	
@@ -125,8 +126,13 @@ std::vector<int> Input::GetTime()
 
 		while (*str != ':' && *str)
 			str++;
-
-		ans.push_back(std::stoi(std::string(begin, str)));
+		std::string sti = std::string(begin, str);
+		if(VerifyNumber(sti))
+			ans.push_back(std::stoi(sti));
+		else {
+			INVALID_INPUT;
+			return GetTime();
+		}
 	} while (0 != *str++);
 
 	if (ans.size() != 2) {
@@ -156,15 +162,30 @@ std::vector<int> Input::GetDate()
 
 		while (*str != '/' && *str)
 			str++;
-
-		ans.push_back(std::stoi(std::string(begin, str)));
+		std::string sti = std::string(begin, str);
+		if(VerifyNumber(sti))
+			ans.push_back(std::stoi(sti));
+		else {
+			INVALID_INPUT;
+			return GetDate();
+		}
 	} while (0 != *str++);
 
 	if (ans.size() != 3) {
 		INVALID_INPUT;
 		return GetDate();
 	}
+	
 	return ans;
+}
+
+bool Input::VerifyNumber(std::string& s)
+{
+	
+	std::string::const_iterator it = s.begin();
+	while (it != s.end() && std::isdigit(*it)) ++it;
+	return !s.empty() && it == s.end();
+	
 }
 
 
