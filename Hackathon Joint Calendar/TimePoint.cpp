@@ -148,7 +148,7 @@ TimePoint::Date TimePoint::Date::CreateDate(uint32_t day, Month month, uint32_t 
 void TimePoint::Date::PrintDate()
 {
     PrintMonth();
-    COUT(" " << day << ", " << year);
+    COUT(" " << day << ", " << year<<".\n");
 }
 
 bool TimePoint::Time::ValidateTime(uint32_t minute, uint32_t hour)
@@ -169,5 +169,5 @@ TimePoint::Time TimePoint::Time::CreateTime(uint32_t minute, uint32_t hour)
 
 void TimePoint::Time::PrintTime()
 {
-    COUT(hour << ":" << minute << ", ");
+    COUT(hour << ":" << minute << " on ");
 }

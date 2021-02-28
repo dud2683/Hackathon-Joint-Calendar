@@ -11,9 +11,50 @@ struct TimeDuration {
 };
 class TimePoint
 {
-	TimePoint() = default;
+	
 public:
+	TimePoint CreateTimePoint(uint32_t min, uint32_t hour, uint32_t day, Month month, )
 	void PrintTimePoint();
+	inline uint32_t GetHours() {
+		return m_time.hour;
+	}
+	inline uint32_t GetMin() {
+		return m_time.minute;
+	}
+	bool operator > (TimePoint& rhs) {
+		
+		if (this->m_date.year > rhs.m_date.year) {
+			return true;
+		}
+		else if (this->m_date.year == rhs.m_date.year) {
+			if (this->m_date.month > rhs.m_date.month)
+				return true;
+			else if (this->m_date.month == rhs.m_date.month) {
+				if (this->m_date.day > rhs.m_date.day)
+					return true;
+				else if (this->m_date.day == rhs.m_date.day) {
+					return this->m_time > rhs.m_time;
+				}
+				else
+					return false;
+			}
+			else
+				return false;
+		}
+		else
+			return false;
+	
+	}
+	bool operator < (TimePoint& rhs) {
+		return rhs > *this;
+	}
+	bool operator >= (TimePoint& rhs) {
+		return !(*this < rhs);
+	}
+	bool operator <= (TimePoint& rhs) {
+		return !(*this > rhs);
+	}
+
 private:
 	struct Date {
 
@@ -66,6 +107,15 @@ private:
 		{}
 		bool ValidateTime(uint32_t minute, uint32_t hour);
 	public:
+		bool operator > (Time& rhs) {
+			if (this->hour > rhs.hour)
+				return true;
+			else if (this->hour == rhs.hour) {
+				return this->minute > rhs.minute;
+			}
+			else
+				return false;
+		}
 		Time CreateTime(uint32_t minute, uint32_t hour);
 		void PrintTime();
 		uint32_t minute;

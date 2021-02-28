@@ -4,6 +4,10 @@
 class Event
 {
 public:
+	bool operator> (Event rhs);
+	bool operator< (Event rhs);
+	bool operator>= (Event rhs);
+	bool operator<= (Event rhs);
 	enum class EventType {
 		Meeting,
 		FreeTime,
@@ -17,8 +21,10 @@ public:
 		std::string eventName;
 		EventType type;
 	};
-	Event* CreateEvent(EventParams& eventParameters);
+	static void CreateEvent(EventParams& eventParameters, Event* p_event);
+	void PrintEvent();
 private:
+	Event(EventParams& ep);
 	TimePoint m_timePoint;
 	std::string m_name;
 	TimeDuration m_duration;

@@ -15,7 +15,7 @@ private:
 	void SelectUser(std::string);
 	User* FindUser(std::string name);
 
-	
+	void FindTimeForEvent();
 
 private:
 	User* p_selectedUser=nullptr;

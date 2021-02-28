@@ -7,14 +7,15 @@ class User
 public:
 	User(std::string name);
 	const std::string* GetName();
-	bool AddEvent();
-	bool RemoveEvent();
+	void AddEvent();
+	void RemoveEvent();
+	void CheckCalendar();
 private:
 
-	bool AddEvent(Event& event);
-	bool RemoveEvent(TimePoint& timpoint);
+	void AddEvent(Event& event);
+	void RemoveEvent(TimePoint& timpoint);
 	
-	
+	TimeTable m_timeTable;
 	const std::string m_name;
 
 };

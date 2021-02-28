@@ -8,7 +8,7 @@ Calendar::Calendar()
 
 void Calendar::UserSelect(bool* loop, bool* loop2)
 {
-	User* user = nullptr;
+	std::string user;
 	switch (Input::PollUserSelection()) {
 		typedef Input::UserSelectOptions u;
 	case u::Create:
@@ -16,7 +16,8 @@ void Calendar::UserSelect(bool* loop, bool* loop2)
 		break;
 	case u::Select:
 		COUT("Please input a username");
-		user = FindUser(Input::GetString());
+		user = Input::GetString();
+		SelectUser(user);
 		break;
 	case u::Leave :
 		COUT("Goodbye\n");
@@ -38,6 +39,13 @@ void Calendar::Update(bool* loop)
 
 	case u::RemoveEvent:
 		p_selectedUser->RemoveEvent();
+		break;
+	
+	case u::FindTimeForEvent:
+		FindTimeForEvent();
+
+	case u::CheckMyCalendar:
+		p_selectedUser->CheckCalendar();
 		break;
 	
 	case u::LogOut:

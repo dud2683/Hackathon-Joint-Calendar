@@ -11,24 +11,31 @@ const std::string* User::GetName()
 	return &m_name;
 }
 
-bool User::AddEvent()
+void User::AddEvent()
 {
-	return true;
+	m_timeTable.AddEvent();
 }
 
-bool User::RemoveEvent()
+void User::RemoveEvent()
 {
-	return false;
+	TimePoint:: tp;
+	m_timeTable.RemoveEvent(TimePoint);
 }
 
-bool User::AddEvent(Event& event)
+void User::CheckCalendar()
 {
-	return false;
+	m_timeTable.PrintNextThreeEvents();
 }
 
-bool User::RemoveEvent(TimePoint& timpoint)
+void User::AddEvent(Event& event)
 {
-	return false;
+	
+	
+}
+
+void User::RemoveEvent(TimePoint& timpoint)
+{
+	
 }
 
 
