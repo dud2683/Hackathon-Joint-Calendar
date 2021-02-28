@@ -15,7 +15,19 @@ TimePoint TimePoint::CreateTimePoint(Time time, Date date)
 void TimePoint::PrintTimePoint()
 {
     m_time.PrintTime();
+    COUT(" on ");
     m_date.PrintDate();
+}
+
+void TimePoint::PrintTimePointTime()
+{
+   m_time.PrintTime();
+   COUT("\n");
+}
+
+Date TimePoint::GetDate()
+{
+    return m_date;
 }
 
 TimePoint TimePoint::GetUserTimePoint()
@@ -41,6 +53,23 @@ TimePoint TimePoint::GetUserTimePoint()
     } while (!Date::ValidateDate(d.day, d.month, d.year));
     
     auto tp = TimePoint(*time, d);
+    delete time;
+    return tp;
+
+}
+
+TimePoint TimePoint::GetUserTimePointTime(const Date& date)
+{
+    Time* time;
+    do {
+
+        COUT("Please input the time (hh:mm)(24h)\n");
+        auto ans = Input::GetTime();
+
+        Time t = Time::CreateTime(ans[1], ans[0]);
+        time = new Time(t);
+    } while (!Time::ValidateTime(time->minute, time->hour));
+    auto tp = TimePoint(*time, date);
     delete time;
     return tp;
 
@@ -221,7 +250,7 @@ Time Time::CreateTime(uint32_t minute, uint32_t hour)
 void Time::PrintTime()
 {
     if (minute >= 10)
-        COUT(hour << ":" << minute << " on ");
+        COUT(hour << ":" << minute);
     else
-        COUT(hour << ":0" << minute << " on ");
+        COUT(hour << ":0" << minute);
 }

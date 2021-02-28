@@ -23,8 +23,9 @@ void User::RemoveEvent()
 	RemoveEvent(tp);
 }
 
-void User::CheckCalendar()
+void User::CheckCalendar(TimePoint& ct)
 {
+	m_timeTable.Update(ct);
 	m_timeTable.PrintNextThreeEvents();
 }
 

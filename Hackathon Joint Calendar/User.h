@@ -9,7 +9,7 @@ public:
 	const std::string* GetName();
 	void AddEvent();
 	void RemoveEvent();
-	void CheckCalendar();
+	void CheckCalendar(TimePoint& ct);
 	void UpdateTimeTable(TimePoint& ct);
 	bool FindEvent(TimePoint& tp);
 private:

@@ -35,6 +35,7 @@ void Calendar::UserSelect(bool* loop, bool* loop2)
 
 void Calendar::Update(bool* loop)
 {
+	UpdateTime();
 	auto input = Input::PollUpdateOptions();
 
 	switch (input) {
@@ -51,7 +52,7 @@ void Calendar::Update(bool* loop)
 		FindTimeForEvent();
 
 	case u::CheckMyCalendar:
-		p_selectedUser->CheckCalendar();
+		p_selectedUser->CheckCalendar(CT);
 		break;
 	
 	case u::LogOut:

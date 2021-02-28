@@ -38,7 +38,7 @@ void Event::PrintEvent()
     COUT(m_name << " at ");
     m_startTimePoint.PrintTimePoint();
     COUT("It goes till ");
-    m_endTimePoint.PrintTimePoint();
+    m_endTimePoint.PrintTimePointTime();
     
 }
 
@@ -60,9 +60,10 @@ Event::EventParams::EventParams()
     type = EventType::Personal;       
     
     COUT("Start point:\n");
-    this->startTime = TimePoint::GetUserTimePoint();
+    auto tp = TimePoint::GetUserTimePoint();
+    this->startTime = tp ;
     COUT("End point:\n");
-    this->endTime = TimePoint::GetUserTimePoint();
+    this->endTime = TimePoint::GetUserTimePointTime(tp.GetDate());
           
 
 }

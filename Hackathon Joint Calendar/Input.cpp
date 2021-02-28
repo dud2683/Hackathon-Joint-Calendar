@@ -12,8 +12,8 @@ R"(Would you like to
 )";
 std::string prompt2 =
 R"(Would you like to
-	Check your calendar for your next meeting (1)
-	Add an event to your calendar(2),
+	Check your calendar for your next 3 events (1)
+	Add an event to your calendar (2),
 	Remove an existing event from your calendar (3),
 	Find a time for an event (4) or
 	Logout (5)
@@ -136,11 +136,16 @@ std::vector<int> Input::GetTime()
 
 std::vector<int> Input::GetDate()
 {
+	//mm/dd/yyyy
 	std::string raw;
+	std::string copy;
 	std::cin.sync();
 	std::getline(std::cin, raw);
+	copy = raw;
 	std::vector<int> ans;
 
+	
+	
 	auto str = raw.c_str();
 
 	do

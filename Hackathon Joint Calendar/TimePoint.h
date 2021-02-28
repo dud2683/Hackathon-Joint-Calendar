@@ -12,6 +12,7 @@ struct TimeDuration {
 struct Date {
 
 public:
+
 	
 	enum class Month {
 		Invalid = 0,
@@ -29,6 +30,7 @@ public:
 		December = 12
 	};
 	static Month StringToMonth(std::string s);
+	
 
 public:
 
@@ -40,6 +42,12 @@ public:
 	Date(uint32_t day, Month month, uint32_t year) :
 		day(day),
 		month(month),
+		year(year)
+	{
+	}
+	Date(uint32_t day, uint32_t month, uint32_t year) :
+		day(day),
+		month(Month(month)),
 		year(year)
 	{
 	}
@@ -92,12 +100,14 @@ public:
 	TimePoint(Time time, Date date);
 	static TimePoint CreateTimePoint(Time time, Date date);
 	void PrintTimePoint();
+	void PrintTimePointTime();
 	inline uint32_t GetHours() {
 		return m_time.hour;
 	}
 	inline uint32_t GetMin() {
 		return m_time.minute;
 	}
+	Date GetDate();
 	bool operator > (TimePoint& rhs) {
 		
 		if (this->m_date.year > rhs.m_date.year) {
@@ -137,6 +147,7 @@ public:
 
 public:
 	static TimePoint GetUserTimePoint();
+	static TimePoint GetUserTimePointTime(const Date& date);
 
 public:
 	TimeDuration operator - (TimePoint& rightHandSide);
