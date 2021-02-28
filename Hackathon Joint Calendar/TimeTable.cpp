@@ -16,15 +16,17 @@ void TimeTable::RemoveEvent(TimePoint& tp)
 	if (index == -1) 
 		COUT("There is no event at that time.");
 	else {
-		
+		RemoveEvent(index);
 	}
 }
 
-void TimeTable::RemoveEvent(int index)
+void TimeTable::RemoveEvent(int index, bool print)
 {
 	Event* selectedEV = m_events[index];
 	delete selectedEV;
 	auto last = m_events.end() - 1;
+	if (print==true)
+		m_events[index]->PrintEvent();
 	m_events[index] = *last;
 	m_events.pop_back();
 	Sort();

@@ -8,7 +8,7 @@ public:
 	
 	void AddEvent();
 	void RemoveEvent(TimePoint& tp);
-	void RemoveEvent(int index);
+	void RemoveEvent(int index, bool print=false);
 	void PrintNextThreeEvents();
 	void Update(TimePoint& ct);
 	std::vector<Event*> m_events;
