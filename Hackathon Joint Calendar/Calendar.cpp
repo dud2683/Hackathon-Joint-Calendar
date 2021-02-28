@@ -7,6 +7,7 @@ Calendar::Calendar()
 	p_selectedUser = nullptr;
 	COUT("The current time is ");
 	CT.PrintTimePoint();
+	SLEEP(2);
 }
 
 void Calendar::UserSelect(bool* loop, bool* loop2)
@@ -21,6 +22,7 @@ void Calendar::UserSelect(bool* loop, bool* loop2)
 		COUT("Please input a username ");
 		user = Input::GetString();
 		SelectUser(user);
+		SLEEP(1);
 		break;
 	case u::Leave :
 		COUT("Goodbye\n");
@@ -34,6 +36,7 @@ void Calendar::UserSelect(bool* loop, bool* loop2)
 void Calendar::Update(bool* loop)
 {
 	auto input = Input::PollUpdateOptions();
+
 	switch (input) {
 		typedef Input::UpdateOptions u;
 	case u::AddEvent:
@@ -106,6 +109,7 @@ void Calendar::SelectUser(User* user)
 	
 	p_selectedUser = user;
 	COUT("Welcome "<<*user->GetName()<<"\n");
+	user->UpdateTimeTable(CT);
 }
 
 void Calendar::SelectUser(std::string name)

@@ -10,7 +10,7 @@ void TimeTable::AddEvent()
 	m_event->PrintEvent();
 }
 
-void TimeTable::RemoveEvent(TimePoint tp)
+void TimeTable::RemoveEvent(TimePoint& tp)
 {
 	int index = FindEvent(tp);
 	if (index == -1) 
@@ -27,35 +27,50 @@ void TimeTable::RemoveEvent(TimePoint tp)
 	
 }
 
+void TimeTable::RemoveEvent(int index)
+{
+}
+
 void TimeTable::PrintNextThreeEvents()
 {
-	RemovePastEvents();
 	int size = m_events.size();
 	bool sizeTest = (size > 0);
 	bool lessThanThree = (size < 3);
 
 	if (!sizeTest) {
 		COUT("You do not have any events planned.\n");
+		SLEEP(1);
 	}
 	else if (lessThanThree) {
 		
 		COUT("Your next event is\n");
 		m_events[0]->PrintEvent();
+		SLEEP(1);
 		if (size == 2) {
 			COUT("Your next event after that is\n");
 			m_events[1]->PrintEvent();
+			SLEEP(1);
 		}
 		
 	}
 	else {
 		COUT("Your next three events are\n");
 		m_events[0]->PrintEvent();
+		SLEEP(1);
 		COUT("Followed by\n");
 		m_events[1]->PrintEvent();
+		SLEEP(1);
 		COUT("Followed by\n");
 		m_events[2]->PrintEvent();
-		
+		SLEEP(1);
 	}
+}
+
+void TimeTable::Update(TimePoint& ct)
+{
+	RemovePastEvents(ct);
+	Sort();
+	
 }
 
 int TimeTable::FindEvent(TimePoint& tp)
@@ -63,6 +78,11 @@ int TimeTable::FindEvent(TimePoint& tp)
 	return 0;
 }
 
-void TimeTable::RemovePastEvents()
+void TimeTable::RemovePastEvents(TimePoint& ct)
 {
+	for (int i = 0;i < m_events.size();i++) {
+		if (m_events[i]->GetEndPoint() < ct) {
+			RemoveEvent(i);
+		}
+	}
 }

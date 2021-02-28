@@ -24,6 +24,6 @@ public:
 	static std::string GetString();
 	static std::vector<int> GetTime();
 	static std::vector<int> GetDate();
-
+	
 };
 

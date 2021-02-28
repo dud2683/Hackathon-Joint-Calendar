@@ -42,61 +42,27 @@ void Event::PrintEvent()
     
 }
 
+TimePoint& Event::GetEndPoint()
+{
+    return m_endTimePoint;
+}
+
+TimePoint& Event::GetStartPoint()
+{
+    return m_startTimePoint;
+}
+
 Event::EventParams::EventParams()
 {
     COUT("What would you like to call this event?\n");
     std::string ans = Input::GetString();
     eventName = ans;
-    type = EventType::Personal;
-    {
-       
-        Time* time;
-        do {
-            COUT("Start point:\n");
-            COUT("Please input the time (hh:mm)(24h)\n");
-            auto ans = Input::GetTime();
-
-            Time t = Time::CreateTime(ans[1], ans[0]);
-            time = new Time(t);
-        } while (!Time::ValidateTime(time->minute, time->hour));
-
-        Date d;
-        do {
-            COUT("Please input the date (mm/dd/yyyy)\n");
-            auto ans = Input::GetDate();
-            d.month = Date::Month(ans[0]);
-            d.day = ans[1];
-            d.year = ans[2];
-
-        } while (!Date::ValidateDate(d.day, d.month, d.year));
-
-        this->startTime = TimePoint(*time, d);
-        delete time;
-    }
-    {
-        Time* time;
-        do {
-            COUT("End point:\n");
-            COUT("Please input the time (hh:mm)(24h)\n");
-            auto ans = Input::GetTime();
-
-            Time t = Time::CreateTime(ans[1], ans[0]);
-            time = new Time(t);
-        } while (!Time::ValidateTime(time->minute, time->hour));
-
-
-        Date d;
-        do {
-
-            COUT("Please input the date (mm/dd/yyyy)\n");
-            auto ans = Input::GetDate();
-            d.month = Date::Month(ans[0]);
-            d.day = ans[1];
-            d.year = ans[2];
-        } while (!Date::ValidateDate(d.day, d.month, d.year));
-
-        this->endTime = TimePoint(*time, d);
-        delete time;
-    }
+    type = EventType::Personal;       
+    
+    COUT("Start point:\n");
+    this->startTime = TimePoint::GetUserTimePoint();
+    COUT("End point:\n");
+    this->endTime = TimePoint::GetUserTimePoint();
+          
 
 }

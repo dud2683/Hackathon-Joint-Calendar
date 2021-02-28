@@ -18,6 +18,34 @@ void TimePoint::PrintTimePoint()
     m_date.PrintDate();
 }
 
+TimePoint TimePoint::GetUserTimePoint()
+{
+    Time* time;
+    do {
+
+        COUT("Please input the time (hh:mm)(24h)\n");
+        auto ans = Input::GetTime();
+
+        Time t = Time::CreateTime(ans[1], ans[0]);
+        time = new Time(t);
+    } while (!Time::ValidateTime(time->minute, time->hour));
+
+    Date d;
+    do {
+        COUT("Please input the date (mm/dd/yyyy)\n");
+        auto ans = Input::GetDate();
+        d.month = Date::Month(ans[0]);
+        d.day = ans[1];
+        d.year = ans[2];
+
+    } while (!Date::ValidateDate(d.day, d.month, d.year));
+    
+    auto tp = TimePoint(*time, d);
+    delete time;
+    return tp;
+
+}
+
 TimeDuration TimePoint::operator-(TimePoint& rightHandSide)
 {
     assert(this->m_time.hour >= rightHandSide.m_time.hour);

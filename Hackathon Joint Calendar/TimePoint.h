@@ -131,9 +131,12 @@ public:
 	bool operator <= (TimePoint& rhs) {
 		return !(*this > rhs);
 	}
+	bool operator == (TimePoint& rhs) {
+		return (!(*this < rhs) && *this < rhs);
+	}
 
 public:
-	
+	static TimePoint GetUserTimePoint();
 
 public:
 	TimeDuration operator - (TimePoint& rightHandSide);

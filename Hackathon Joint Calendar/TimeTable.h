@@ -7,8 +7,11 @@ class TimeTable
 public:
 	
 	void AddEvent();
-	void RemoveEvent(TimePoint tp);
+	void RemoveEvent(TimePoint& tp);
+	void RemoveEvent(int index);
 	void PrintNextThreeEvents();
+	void Update(TimePoint& ct);
+	std::vector<Event*> m_events;
 private:
 	void Sort() {
 		std::sort(m_events.begin(), m_events.end(),
@@ -17,8 +20,8 @@ private:
 			});
 	}
 	int FindEvent(TimePoint& tp); //returns index of event
-	void RemovePastEvents();
+	void RemovePastEvents(TimePoint& ct);
 
-	std::vector<Event*> m_events;
+	
 };
 

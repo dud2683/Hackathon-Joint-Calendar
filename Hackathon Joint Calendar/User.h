@@ -10,10 +10,12 @@ public:
 	void AddEvent();
 	void RemoveEvent();
 	void CheckCalendar();
+	void UpdateTimeTable(TimePoint& ct);
+	bool FindEvent(TimePoint& tp);
 private:
-
+	
 	void AddEvent(Event& event);
-	void RemoveEvent(TimePoint& timpoint);
+	void RemoveEvent(TimePoint& timepoint);
 	
 	TimeTable m_timeTable;
 	const std::string m_name;

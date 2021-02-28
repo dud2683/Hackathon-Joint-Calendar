@@ -18,12 +18,29 @@ void User::AddEvent()
 
 void User::RemoveEvent()
 {
+	TimePoint tp = TimePoint::GetUserTimePoint();
 	
+	RemoveEvent(tp);
 }
 
 void User::CheckCalendar()
 {
 	m_timeTable.PrintNextThreeEvents();
+}
+
+void User::UpdateTimeTable(TimePoint& ct)
+{
+	m_timeTable.Update(ct);
+}
+
+bool User::FindEvent(TimePoint& startTime)
+{
+    int size = m_timeTable.m_events.size();
+    for (int i = 0;i < size;i++) {
+        if (m_timeTable.m_events[i]->GetStartPoint() == startTime)
+            return true;
+    }
+    return false;
 }
 
 void User::AddEvent(Event& event)
@@ -32,9 +49,9 @@ void User::AddEvent(Event& event)
 	
 }
 
-void User::RemoveEvent(TimePoint& timpoint)
+void User::RemoveEvent(TimePoint& timepoint)
 {
-	
+    m_timeTable.RemoveEvent(timepoint);
 }
 
 

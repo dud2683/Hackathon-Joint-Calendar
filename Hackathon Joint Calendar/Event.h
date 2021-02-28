@@ -25,6 +25,8 @@ public:
 
 	
 	void PrintEvent();
+	TimePoint& GetEndPoint();
+	TimePoint& GetStartPoint();
 private:
 	
 	TimePoint m_startTimePoint;

@@ -1,5 +1,6 @@
 
 #include "Common.h"
+#include "TimePoint.h"
 
 std::string d;
 
@@ -155,4 +156,5 @@ std::vector<int> Input::GetDate()
 
 	return ans;
 }
+
 
