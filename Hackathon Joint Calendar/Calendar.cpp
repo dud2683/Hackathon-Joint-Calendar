@@ -5,7 +5,7 @@ Calendar::Calendar()
 	COUT("Running\n");
 	UpdateTime();
 	p_selectedUser = nullptr;
-	COUT("The current time is : ");
+	COUT("The current time is ");
 	CT.PrintTimePoint();
 }
 
