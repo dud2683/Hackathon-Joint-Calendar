@@ -13,7 +13,7 @@ class TimePoint
 {
 	
 public:
-	TimePoint CreateTimePoint(uint32_t min, uint32_t hour, uint32_t day, Month month, )
+	TimePoint CreateTimePoint(uint32_t min, uint32_t hour, uint32_t day);
 	void PrintTimePoint();
 	inline uint32_t GetHours() {
 		return m_time.hour;

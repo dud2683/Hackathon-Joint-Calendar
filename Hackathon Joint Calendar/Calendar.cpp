@@ -123,3 +123,7 @@ User* Calendar::FindUser(std::string name)
 	return nullptr;
 }
 
+void Calendar::FindTimeForEvent()
+{
+}
+

@@ -18,8 +18,7 @@ void User::AddEvent()
 
 void User::RemoveEvent()
 {
-	TimePoint:: tp;
-	m_timeTable.RemoveEvent(TimePoint);
+	
 }
 
 void User::CheckCalendar()

@@ -20,10 +20,10 @@ bool Event::operator<=(Event rhs)
     return !(this->m_timePoint > rhs.m_timePoint);
 }
 
-void Event::CreateEvent(EventParams& eventParameters, Event* p_event)
+/*void Event::CreateEvent(EventParams& eventParameters, Event* p_event)
 {
     p_event = new Event(eventParameters);
-}
+}*/
 
 void Event::PrintEvent()
 {
