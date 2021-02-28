@@ -1,6 +1,8 @@
 
 #include "Common.h"
 
+std::string d;
+
 std::string prompt1 = 
 R"(Would you like to
 	Select a user (1),
@@ -27,7 +29,8 @@ Input::UserSelectOptions Input::PollUserSelection()
 	int answer;
 	std::string rough;
 	
-	CIN(rough);
+	std::cin.sync();
+	std::getline(std::cin,rough);
 	answer = rough[0]-48;
 	//COUT(answer);// To troubleshoot, remove //
 	if(answer < 1 ||answer>3) {
@@ -48,7 +51,8 @@ Input::UpdateOptions Input::PollUpdateOptions()
 	
 	COUT(prompt2);
 	std::string rough;
-	CIN(rough);
+	std::cin.sync();
+	std::getline(std::cin, rough);
 	int answer = rough[0]-48;
 
 	if (answer < 1 || answer>5) {
@@ -67,7 +71,8 @@ bool Input::UserNameInUse()
 {
 	COUT(prompt3);
 	std::string rough;
-	CIN(rough);
+	std::cin.sync();
+	std::getline(std::cin, rough);
 	int answer = rough[0] - 48;
 	if (answer == 1)
 		return true;
@@ -79,7 +84,8 @@ bool Input::YesOrNo()
 {
 	YES_NO;
 	std::string rough;
-	CIN(rough);
+	std::cin.sync();
+	std::getline(std::cin, rough);
 	int answer = rough[0] - 48;
 	if (answer == 1)
 		return true;
@@ -87,9 +93,66 @@ bool Input::YesOrNo()
 		return false;
 }
 
+int Input::GetInt()
+{
+	std::string x;
+	std::cin.sync();
+	std::getline(std::cin, x);
+	return std::stoi(x);
+}
+
 std::string Input::GetString()
 {
 	std::string answer;
-	CIN(answer);
+	std::cin.sync();
+	std::getline(std::cin, answer);
 	return answer;
 }
+
+std::vector<int> Input::GetTime()
+{
+	std::string raw;
+	std::cin.sync();
+	
+	std::getline(std::cin, raw);
+	std::vector<int> ans;
+
+	auto str = raw.c_str();
+
+	do
+	{
+		const char* begin = str;
+
+		while (*str != ':' && *str)
+			str++;
+
+		ans.push_back(std::stoi(std::string(begin, str)));
+	} while (0 != *str++);
+
+
+	return ans;
+}
+
+std::vector<int> Input::GetDate()
+{
+	std::string raw;
+	std::cin.sync();
+	std::getline(std::cin, raw);
+	std::vector<int> ans;
+
+	auto str = raw.c_str();
+
+	do
+	{
+		const char* begin = str;
+
+		while (*str != '/' && *str)
+			str++;
+
+		ans.push_back(std::stoi(std::string(begin, str)));
+	} while (0 != *str++);
+
+
+	return ans;
+}
+

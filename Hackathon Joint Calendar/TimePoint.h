@@ -9,11 +9,87 @@ struct TimeDuration {
 
 	const uint32_t minutes, hours;
 };
+struct Date {
+
+public:
+
+	enum class Month {
+		Invalid = 0,
+		January = 1,
+		February = 2,
+		March = 3,
+		April = 4,
+		May = 5,
+		June = 6,
+		July = 7,
+		August = 8,
+		September = 9,
+		October = 10,
+		November = 11,
+		December = 12
+	};
+
+public:
+
+	void PrintMonth();
+	Date() = default;
+
+public:
+
+	Date(uint32_t day, Month month, uint32_t year) :
+		day(day),
+		month(month),
+		year(year)
+	{
+	}
+public:
+	static bool ValidateDate(uint32_t day, Month month, uint32_t year);
+
+public:
+
+	static Date CreateDate(uint32_t day, Month month, uint32_t m_year);
+	void PrintDate();
+	uint32_t day;
+	Month month;
+	uint32_t year;
+};
+struct Time {
+public:
+
+	Time(uint32_t minute, uint32_t hour) :
+		minute(minute),
+		hour(hour)
+	{}
+	
+public:
+	static bool ValidateTime(uint32_t minute, uint32_t hour);
+	bool operator > (Time& rhs) {
+		if (this->hour > rhs.hour)
+			return true;
+		else if (this->hour == rhs.hour) {
+			return this->minute > rhs.minute;
+		}
+		else
+			return false;
+	}
+	static Time CreateTime(uint32_t minute, uint32_t hour);
+	void PrintTime();
+	uint32_t minute;
+	uint32_t hour;
+};
 class TimePoint
 {
 	
 public:
-	TimePoint CreateTimePoint(uint32_t min, uint32_t hour, uint32_t day);
+	TimePoint() 
+		:
+		m_date(0,Date::Month(0),0),
+		m_time(0,0)
+	{
+	
+	};
+	TimePoint(Time time, Date date);
+	static TimePoint CreateTimePoint(Time time, Date date);
 	void PrintTimePoint();
 	inline uint32_t GetHours() {
 		return m_time.hour;
@@ -55,72 +131,8 @@ public:
 		return !(*this > rhs);
 	}
 
-private:
-	struct Date {
-
-	public:
-		
-		enum class Month {
-			Invalid = 0,
-			January = 1,
-			February = 2,
-			March = 3,
-			April = 4,
-			May = 5,
-			June = 6,
-			July = 7,
-			August = 8,
-			September = 9,
-			October = 10,
-			November = 11,
-			December = 12
-		};
-
-	public:
-
-		void PrintMonth();
-
-	private:
-
-		Date(uint32_t day, Month month, uint32_t year):
-		day(day),
-		month(month),
-		year(year)
-		{
-		}
-		bool ValidateDate(uint32_t day, Month month, uint32_t year);
-
-	public:
-
-		Date CreateDate(uint32_t day, Month month, uint32_t m_year);
-		void PrintDate();
-		uint32_t day;
-		Month month;
-		uint32_t year;
-	};
-	struct Time {
-	private:
-
-		Time(uint32_t minute, uint32_t hour):
-		minute(minute),
-		hour(hour)
-		{}
-		bool ValidateTime(uint32_t minute, uint32_t hour);
-	public:
-		bool operator > (Time& rhs) {
-			if (this->hour > rhs.hour)
-				return true;
-			else if (this->hour == rhs.hour) {
-				return this->minute > rhs.minute;
-			}
-			else
-				return false;
-		}
-		Time CreateTime(uint32_t minute, uint32_t hour);
-		void PrintTime();
-		uint32_t minute;
-		uint32_t hour;
-	};
+public:
+	
 
 public:
 	TimeDuration operator - (TimePoint& rightHandSide);

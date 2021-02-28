@@ -20,7 +20,10 @@ public:
 	static UpdateOptions PollUpdateOptions();
 	static bool UserNameInUse();
 	static bool YesOrNo();
+	static int GetInt();
 	static std::string GetString();
+	static std::vector<int> GetTime();
+	static std::vector<int> GetDate();
 
 };
 

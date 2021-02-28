@@ -1,5 +1,17 @@
 #include "TimePoint.h"
 
+TimePoint::TimePoint(Time time, Date date)
+    :
+    m_time(time),
+    m_date(date)
+{
+}
+
+TimePoint TimePoint::CreateTimePoint(Time time, Date date)
+{
+    return TimePoint(time, date);
+}
+
 void TimePoint::PrintTimePoint()
 {
     m_time.PrintTime();
@@ -22,9 +34,9 @@ TimeDuration TimePoint::operator-(TimePoint& rightHandSide)
     return TimeDuration(hour,min);
 }
 
-void TimePoint::Date::PrintMonth()
+void Date::PrintMonth()
 {
-    typedef TimePoint::Date::Month Month;
+    typedef Date::Month Month;
     switch (month) {
     case Month::January:
             COUT("January ");
@@ -63,9 +75,9 @@ void TimePoint::Date::PrintMonth()
     }
 }
 
-bool TimePoint::Date::ValidateDate(uint32_t day, Month month, uint32_t year)
+bool Date::ValidateDate(uint32_t day, Month month, uint32_t year)
 {
-    typedef TimePoint::Date::Month Month;
+    typedef Date::Month Month;
 
     if (year < 2000 || year>2200)
         return false;
@@ -132,42 +144,45 @@ bool TimePoint::Date::ValidateDate(uint32_t day, Month month, uint32_t year)
         break;
             
     }
+    if (!returnBool) {
+        COUT("That date was invalid, please try again.\n");
+    }
     return returnBool;
 }
 
 
-TimePoint::Date TimePoint::Date::CreateDate(uint32_t day, Month month, uint32_t year)
+Date Date::CreateDate(uint32_t day, Month month, uint32_t year)
 {
-    if (ValidateDate(day, month, year))
-        return TimePoint::Date(day, month, year);
-    else
-        return TimePoint::Date(0, TimePoint::Date::Month::Invalid, 0);
+   
+     return Date(day, month, year);
    
 }
 
-void TimePoint::Date::PrintDate()
+void Date::PrintDate()
 {
     PrintMonth();
-    COUT(" " << day << ", " << year<<".\n");
+    COUT(day << ", " << year<<".\n");
 }
 
-bool TimePoint::Time::ValidateTime(uint32_t minute, uint32_t hour)
+bool Time::ValidateTime(uint32_t minute, uint32_t hour)
 {
     if (minute < 60 && hour < 24)
         return true;
-    else
+    else {
+        COUT("That time is invalid, please try again.\n");
         return false;
+    }
 }
 
-TimePoint::Time TimePoint::Time::CreateTime(uint32_t minute, uint32_t hour)
+Time Time::CreateTime(uint32_t minute, uint32_t hour)
 {
-    if (ValidateTime(minute, hour))
-        return Time(minute, hour);
+   return Time(minute, hour);
+}
+
+void Time::PrintTime()
+{
+    if (minute >= 10)
+        COUT(hour << ":" << minute << " on ");
     else
-        return Time(61, 25);
-}
-
-void TimePoint::Time::PrintTime()
-{
-    COUT(hour << ":" << minute << " on ");
+        COUT(hour << ":0" << minute << " on ");
 }

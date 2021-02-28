@@ -49,6 +49,7 @@ void Calendar::Update(bool* loop)
 		break;
 	
 	case u::LogOut:
+		COUT("Logging out.\n");
 		p_selectedUser = nullptr;
 		*loop = false;
 		break;

@@ -2,7 +2,12 @@
 
 void TimeTable::AddEvent()
 {
+	Event::EventParams ep;
 	
+	Event* m_event = new Event(ep);
+	m_events.push_back(m_event);
+	COUT("You have successfuly created an event :\n");
+	m_event->PrintEvent();
 }
 
 void TimeTable::RemoveEvent(TimePoint tp)

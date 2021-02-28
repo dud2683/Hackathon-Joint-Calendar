@@ -15,18 +15,22 @@ public:
 		Personal
 	};
 	struct EventParams {
-		EventParams() = default;
+		EventParams();
 		TimePoint startTime;
-		int duration;
+		TimePoint endTime;
 		std::string eventName;
 		EventType type;
 	};
+	Event(EventParams& ep);
+
 	
 	void PrintEvent();
 private:
 	
-	TimePoint m_timePoint;
+	TimePoint m_startTimePoint;
+	TimePoint m_endTimePoint;
 	std::string m_name;
+
 	TimeDuration m_duration;
 	EventType m_eventType;
 
