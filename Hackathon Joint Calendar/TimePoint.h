@@ -36,7 +36,7 @@ public:
 
 	void PrintMonth();
 	Date() = default;
-
+	
 public:
 
 	Date(uint32_t day, Month month, uint32_t year) :
@@ -142,7 +142,11 @@ public:
 		return !(*this > rhs);
 	}
 	bool operator == (TimePoint& rhs) {
-		return (!(*this < rhs) && *this < rhs);
+		return (this->GetMin() == rhs.GetMin()&&
+				this->GetHours() == rhs.GetHours()&&
+				this->m_date.day == rhs.m_date.day &&
+				this->m_date.month == rhs.m_date.month &&
+				this->m_date.year == rhs.m_date.year);
 	}
 
 public:

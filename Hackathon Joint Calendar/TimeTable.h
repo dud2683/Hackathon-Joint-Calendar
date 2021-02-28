@@ -16,7 +16,7 @@ private:
 	void Sort() {
 		std::sort(m_events.begin(), m_events.end(),
 			[](Event* a, Event* b) {
-				return *a > *b;
+				return *a < *b;
 			});
 	}
 	int FindEvent(TimePoint& tp); //returns index of event
