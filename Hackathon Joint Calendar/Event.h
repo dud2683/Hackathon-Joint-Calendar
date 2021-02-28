@@ -15,7 +15,7 @@ public:
 		Personal
 	};
 	struct EventParams {
-		EventParams();
+		EventParams(TimePoint& ct);
 		TimePoint startTime;
 		TimePoint endTime;
 		std::string eventName;
@@ -25,6 +25,7 @@ public:
 
 	
 	void PrintEvent();
+	void PrintEventStart();
 	TimePoint& GetEndPoint();
 	TimePoint& GetStartPoint();
 private:

@@ -7,7 +7,7 @@ class User
 public:
 	User(std::string name);
 	const std::string* GetName();
-	void AddEvent();
+	void AddEvent(TimePoint& ct);
 	void RemoveEvent();
 	void CheckCalendar(TimePoint& ct);
 	void UpdateTimeTable(TimePoint& ct);

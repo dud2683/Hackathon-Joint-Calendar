@@ -1,8 +1,8 @@
 #include "TimeTable.h"
 
-void TimeTable::AddEvent()
+void TimeTable::AddEvent(TimePoint& ct)
 {
-	Event::EventParams ep;
+	Event::EventParams ep = Event::EventParams(ct);
 	
 	Event* m_event = new Event(ep);
 	m_events.push_back(m_event);
@@ -23,15 +23,18 @@ void TimeTable::RemoveEvent(TimePoint& tp)
 void TimeTable::RemoveEvent(int index, bool print)
 {
 	Event* selectedEV = m_events[index];
-	delete selectedEV;
-	auto last = m_events.end() - 1;
+	
 	if (print == true) {
 		COUT("Removing \n");
-		m_events[index]->PrintEvent();
+		m_events[index]->PrintEventStart();
 	}
+	delete selectedEV;
+	auto last = m_events.end() - 1;
 	m_events[index] = *last;
 	m_events.pop_back();
-	Sort();
+	if (m_events.size() >= 2) {
+		Sort();
+	}
 }
 
 void TimeTable::PrintNextThreeEvents()

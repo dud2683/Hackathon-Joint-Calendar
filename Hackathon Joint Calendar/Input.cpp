@@ -130,7 +130,10 @@ std::vector<int> Input::GetTime()
 		ans.push_back(std::stoi(std::string(begin, str)));
 	} while (0 != *str++);
 
-
+	if (ans.size() != 2) {
+		INVALID_INPUT;
+		return GetTime();
+	}
 	return ans;
 }
 
@@ -158,7 +161,10 @@ std::vector<int> Input::GetDate()
 		ans.push_back(std::stoi(std::string(begin, str)));
 	} while (0 != *str++);
 
-
+	if (ans.size() != 3) {
+		INVALID_INPUT;
+		return GetDate();
+	}
 	return ans;
 }
 

@@ -11,9 +11,9 @@ const std::string* User::GetName()
 	return &m_name;
 }
 
-void User::AddEvent()
+void User::AddEvent(TimePoint& ct)
 {
-	m_timeTable.AddEvent();
+	m_timeTable.AddEvent(ct);
 }
 
 void User::RemoveEvent()

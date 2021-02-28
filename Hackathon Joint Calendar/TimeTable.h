@@ -6,7 +6,7 @@ class TimeTable
 {
 public:
 	
-	void AddEvent();
+	void AddEvent(TimePoint& ct);
 	void RemoveEvent(TimePoint& tp);
 	void RemoveEvent(int index, bool print=false);
 	void PrintNextThreeEvents();

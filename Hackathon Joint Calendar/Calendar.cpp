@@ -41,7 +41,7 @@ void Calendar::Update(bool* loop)
 	switch (input) {
 		typedef Input::UpdateOptions u;
 	case u::AddEvent:
-		p_selectedUser->AddEvent();
+		p_selectedUser->AddEvent(CT);
 		break;
 
 	case u::RemoveEvent:
